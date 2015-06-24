@@ -24,11 +24,11 @@ python_to_zson = {str(v): k for k, v in zson_to_python.items()}
 
 
 encode_key = ['\\', '\t', '\r', '\n', '\f', '"']
-encode_value = ['\\\\', '\\t', '\\r', '\\n', '\\f', '\\"']
+encode_value = [r'\\', r'\t', r'\r', r'\n', r'\f', r'\"']
 encode_dict = dict(zip(encode_key, encode_value))
 encode_re = re.compile('|'.join(re.escape(c) for c in encode_key))
 
-decode_key = encode_value + ['\\}', '\\]', '\\:', '\\,']
+decode_key = encode_value + [r'\}', r'\]', r'\:', r'\,']
 decode_value = encode_key + ['}', ']', ':', ',']
 decode_dict = dict(zip(decode_key, decode_value))
 decode_re = re.compile('|'.join(re.escape(c) for c in decode_key))

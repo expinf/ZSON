@@ -18,7 +18,8 @@
 
 import zson
 
-obj1 = zson.loads('  [ a\\\\b\\nc  : {\' x \':z  , "y":[aaa:bbb]},"c":  -0.123e-10  ,"d":[[{   }] ],"e":{},"f":false]')
+obj1 = zson.loads(r"""  [ a\\b\nc  : {' x ':z  , "y":[aaa:bbb]},
+	"c":  -0.123e-10  ,"d":[[{   }] ],"e":{},"f":false]""")
 print(obj1)
 print(zson.dumps(obj1))
 print(zson.loads(zson.dumps(obj1)))
